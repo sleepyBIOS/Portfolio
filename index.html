@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Particles Background with Dark Mode Content</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            font-family: Arial, sans-serif;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #content-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+            background-color: rgb(8, 8, 8);
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        #center-content {
+            display: inline-block;
+            font-size: 0;
+        }
+
+        #center-content span {
+            display: block;
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
+
+        #center-content span#david {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        #center-content .button-box {
+            margin-top: 20px;
+        }
+
+        #center-content .commission-status {
+            color: green;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        #center-content a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin: 0 5px;
+        }
+
+        #content-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 2px solid rgb(15, 15, 15);
+            border-radius: 10px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 255, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 9999;
+        }
+
+        .show-notification {
+            opacity: 1;
+        }
+
+        #github-icon {
+            filter: invert(1);
+        }
+        #roblox-icon {
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div id="content-container">
+        <div id="center-content">
+            <span id="david">David</span><br>
+            <span>Hi, I'm David! Online I go by sleepybios although
+                you can call me either. I have
+                been working with LuaU on Roblox for 2 years, and in that time I have made
+                more then 12 games. If you would like
+                to reach out to me just press the discord button under this text and it'll copy
+                my discord username to your clipboard.
+            </span><br>
+            <div class="button-box">
+                <a href="https://github.com/sleepyBIOS" target="_blank"><img id="github-icon" src="https://cdn.simpleicons.org/github" alt="GitHub"></a>
+                <a href="javascript:void(0)" id="discord-link" onclick="copyToClipboard()"><img src="https://cdn.simpleicons.org/discord/" alt="Discord"></a>
+                <a href="https://www.roblox.com/users/1448424015/profile" target="_blank"><img id="roblox-icon" src="https://simpleicons.org/icons/roblox.svg" alt="GitHub"></a>
+            </div>
+            <span class="commission-status">Commission status: Open</span>
+        </div>
+    </div>
+    <div class="notification" id="copied-notification">Copied!</div>
+    <script src="app.js"></script>
+    <script>
+        function copyToClipboard() {
+            var textToCopy = 'sleepybios';
+            var textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            textArea.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            var notification = document.getElementById('copied-notification');
+            notification.classList.add('show-notification');
+            setTimeout(function() {
+                notification.classList.remove('show-notification');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
