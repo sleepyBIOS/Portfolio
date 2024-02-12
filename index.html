@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="shortcut icon" href="nerd.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             margin: 0;
@@ -17,6 +17,23 @@
             font-family: Arial, sans-serif;
             opacity: 0;
             animation: fadeIn 2s ease forwards;
+        }
+
+        #center-content a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin: 0 5px;
+            transition: transform 0.3s ease, /* smooth transition for transform */
+                        width 0.3s ease,     /* smooth transition for width */
+                        height 0.3s ease;    /* smooth transition for height */
+        }
+
+        #center-content a:hover {
+            transform: scale(1.5);
         }
 
         @keyframes fadeIn {
@@ -40,6 +57,7 @@
             border: 2px solid white;
             border-radius: 10px;
             max-width: 600px;
+            width: 90%; /* Adjusted for mobile */
         }
 
         #center-content {
@@ -63,19 +81,9 @@
         }
 
         #center-content .commission-status {
-            color: green;
+            color: rgb(0, 255, 0);
             font-size: 0.8rem;
             margin-top: 10px;
-        }
-
-        #center-content a {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            margin: 0 5px;
         }
 
         #content-container {
@@ -99,15 +107,24 @@
             z-index: 9999;
         }
 
-        .show-notification {
-            opacity: 1;
-        }
-
         #github-icon {
             filter: invert(1);
         }
+
         #roblox-icon {
-            filter: invert(1);
+            filter: brightness(0) saturate(100%) invert(29%) sepia(95%) saturate(7487%) hue-rotate(3deg) brightness(100%) contrast(101%);
+        }
+
+        #center-content a:hover {
+            transform: scale(1.5);
+            transition: transform 0.3s ease;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media screen and (max-width: 600px) {
+            #content-container {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -118,8 +135,8 @@
             <span id="david">Portfolio</span><br>
             <span>Hi, I'm David! Online I go by sleepybios although
                 you can call me either. I have
-                been working with LuaU on Roblox for 2 years, and in that time I have made many
-                games. If you would like
+                been working with LuaU on Roblox for 2 years, and in that time I have made
+                many games. If you would like
                 to reach out to me just press the discord button under this text and it'll copy
                 my discord username to your clipboard.
             </span><br>
